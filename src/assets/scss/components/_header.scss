@@ -1,0 +1,55 @@
+@import '../variables';
+.header__inner {
+	margin: 15px 0;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	.logo {
+		h3 {
+			width: 250px;
+		}
+		a {
+			width: 250px;
+			font-family: 'Bebas Neue', cursive;
+			color: $black;
+			font-size: 28px;
+		}
+	}
+}
+.logo {
+	margin: auto 0;
+}
+.request__call {
+	place-self: start end;
+	border: transparent;
+	background-color: transparent;
+	& .btn {
+		cursor: pointer;
+		display: block;
+		margin-left: auto;
+		padding: 10px 55px;
+		background: #e4ffff;
+		border: none;
+		outline: none;
+		border-radius: 10px;
+		transition: all linear 0.1s;
+		&-request__call {
+			color: $black;
+			font-size: 14px;
+			font-weight: 300;
+		}
+	}
+	& .number p {
+		padding: 15px 0 0 15px;
+		text-align: center;
+		font-size: 28px;
+		font-weight: 500;
+		color: $black;
+		transition: all linear 0.3s;
+	}
+	&:hover .btn-request__call {
+		color: $darkTeal;
+	}
+	&:hover .number p {
+		color: $darkTeal;
+	}
+}

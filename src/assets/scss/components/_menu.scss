@@ -1,0 +1,140 @@
+@import '../variables';
+
+.menu__items {
+	position: relative;
+	padding: 15px;
+	text-align: right;
+
+	.rubrics {
+		b {
+			cursor: pointer;
+			font-size: 14px;
+			font-weight: 500;
+			color: black;
+			transition: all linear 0.1s;
+			&:hover {
+				color: $darkTeal;
+				text-decoration: underline;
+			}
+		}
+		i {
+			margin-left: 10px;
+			margin-right: 60px;
+			transition: all 0.2s linear;
+		}
+		.rotate {
+			transform: rotate(180deg);
+		}
+		.rotated {
+			transform: rotate(0);
+		}
+		&:hover {
+			color: $darkTeal;
+		}
+	}
+	.a__menu {
+		margin-right: 60px;
+	}
+
+	li {
+		display: inline;
+		&:last-child {
+			margin-right: 60px;
+		}
+	}
+	.sub-menu__item {
+		text-align: center;
+
+		border-radius: 10px;
+		position: absolute;
+		left: 51%;
+		top: 110%;
+		z-index: 8;
+		background: rgba($color: #e4ffff, $alpha: 1);
+		width: 120px;
+		& li {
+			cursor: pointer;
+			padding: 10px 0 5px;
+			margin-right: 0;
+			display: block;
+			font-size: 14px;
+			color: $black;
+			transition: all 0.1s linear;
+			&:hover {
+				color: $darkTeal;
+				text-decoration: underline;
+			}
+			&:last-child {
+				padding-bottom: 10px;
+				padding-top: 5px;
+			}
+		}
+	}
+	// .rubrics:hover .sub-menu__item {
+	// 	display: block;
+	// }
+}
+
+.a__menu {
+	font-size: 14px;
+	font-weight: 500;
+	color: black;
+	&:hover {
+		color: $darkTeal;
+		text-decoration: underline;
+	}
+	transition: all linear 0.1s;
+}
+.menu {
+	background: #e4ffff;
+	height: 50px;
+	.container {
+		display: grid;
+		grid-template-columns: 3fr 1fr;
+		.sort__block {
+			position: relative;
+			margin: auto 0;
+			margin-left: auto;
+			.sort__label {
+				b {
+					font-size: 14px;
+					font-weight: 400;
+				}
+				span {
+					cursor: pointer;
+					margin-left: 5px;
+					font-size: 14px;
+					font-weight: 400;
+					color: $darkTeal;
+					text-decoration: underline;
+				}
+			}
+			.sort__items {
+				position: absolute;
+				top: 100%;
+				left: 100%;
+				z-index: 9;
+				transform: translate(-100%, 25%);
+				ul {
+					width: 130px;
+					background-color: #e4ffff;
+					padding: 10px;
+					border-radius: 10px;
+					li {
+						cursor: pointer;
+						font-size: 14px;
+						font-weight: 300;
+						transition: all 0.1s linear;
+						&:hover {
+							color: $darkTeal;
+							text-decoration: underline;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+main {
+	margin-top: 20px;
+}

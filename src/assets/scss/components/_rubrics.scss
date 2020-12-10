@@ -1,0 +1,33 @@
+@import '../variables';
+.rubrics__title {
+	margin-top: 40px;
+	width: 330px;
+	height: 75px;
+	text-align: left;
+}
+.rubrics__wrapper {
+	margin-top: 60px;
+	display: flex;
+	justify-content: space-between;
+	.rubrics__img {
+		min-width: 280px;
+		min-height: 330px;
+		margin-right: 40px;
+	}
+	.rubrics__article {
+		.rubrics__autor p {
+			margin-top: 20px;
+			font-size: 14px;
+			font-weight: 300;
+			opacity: 0.5;
+			text-align: right;
+		}
+		.rubrics__date p {
+			margin: 10px 0 100px;
+			font-size: 14px;
+			font-weight: 300;
+			opacity: 0.5;
+			text-align: right;
+		}
+	}
+}

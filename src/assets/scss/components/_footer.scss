@@ -1,0 +1,46 @@
+@import '../variables';
+.foot{
+  background: #062F2F;
+  height: 240px;
+}
+.foot__items{
+  display: grid;
+  justify-content: space-between;
+  grid-template-columns: 2fr 1fr;
+  grid-column-gap: 10px;
+  .foot__item{
+    .foot__items__mini{
+      display: grid;
+      justify-content: space-between;
+      grid-template-columns: repeat(2, 1fr);
+      grid-column-gap: 10px;
+      .foot__item__mini{
+        margin-top: 20px;
+        & h1{
+          color: $white;
+          font-size: 20px;
+          font-weight: 400;
+        }
+        & p{
+          font-size: 14px;
+          line-height: 16px;
+          color: $white;
+          margin-top: 20px;
+        }
+        .a-foot{
+          color: $white;
+          font-size: 14px;
+          font-weight: 400;
+          & i{
+            margin-right: 10px;
+            font-size: 20px;
+            font-weight: 400;
+          }
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  }
+}
