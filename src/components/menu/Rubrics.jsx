@@ -31,7 +31,7 @@ const Rubrics = React.memo(function Rubrics({ activeRubric, rubricsItems, onClic
 	return (
 		<li ref={rubricsRef} className='menu__item rubrics'>
 			<b onClick={toggleVisableRubrics}>
-				{activeNameRubric}
+				{activeNameRubric != null ? activeNameRubric : 'Все рубрики'}
 				<span>
 					<i className={classNames('fas fa-arrow-up rotate', visableRubrics ? 'rotated' : '')}></i>
 				</span>
