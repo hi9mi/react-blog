@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, Route } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Rubrics, SortBy } from '..';
 import { setRubric, setSortBy } from '../../redux/actions/filters';
 
@@ -9,10 +9,12 @@ export default function Menu() {
 
 	const onSelectRubric = React.useCallback((index) => {
 		dispatch(setRubric(index));
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	const onSelectSortType = React.useCallback((type) => {
 		dispatch(setSortBy(type));
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	const { rubric, sortBy } = useSelector(({ filters }) => filters);
@@ -34,9 +36,7 @@ export default function Menu() {
 							Главная
 						</Link>
 					</li>
-					<Route path='/' exact>
-						<Rubrics rotated activeRubric={rubric} onClickRubrics={onSelectRubric} rubricsItems={rubricsNames} />
-					</Route>
+					<Rubrics rotated activeRubric={rubric} onClickRubrics={onSelectRubric} rubricsItems={rubricsNames} />
 					<li className='menu__item'>
 						<Link to='/about-us' className='a__menu'>
 							О нас
@@ -48,9 +48,7 @@ export default function Menu() {
 						</Link>
 					</li>
 				</ul>
-				<Route path='/' exact>
-					<SortBy activeSortType={sortBy} sortItems={sortNames} onClickSortType={onSelectSortType} />
-				</Route>
+				<SortBy activeSortType={sortBy} sortItems={sortNames} onClickSortType={onSelectSortType} />
 			</div>
 		</div>
 	);

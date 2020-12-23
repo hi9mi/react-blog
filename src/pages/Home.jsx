@@ -36,6 +36,7 @@ export default function Home() {
 		dispatch(fetchRubrics( sortBy ,rubric));
 		dispatch(fetchMediumRubrics(sortBy ,rubric));
 		dispatch(fetchBigRubrics(sortBy ,rubric));
+	// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [rubric, sortBy]);
 
 	return (
