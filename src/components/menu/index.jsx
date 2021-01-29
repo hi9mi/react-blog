@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Rubrics, SortBy } from '..';
 import { setRubric, setSortBy } from '../../redux/actions/filters';
+import { rubricsNames, sortNames } from '../../utils/Constants/rubricAndSortNames';
 
 export default function Menu() {
 	const dispatch = useDispatch();
@@ -18,14 +19,6 @@ export default function Menu() {
 	}, []);
 
 	const { rubric, sortBy } = useSelector(({ filters }) => filters);
-
-	const rubricsNames = ['Рубрики 1', 'Рубрики 2', 'Рубрики 3', 'Рубрики 4'];
-
-	const sortNames = [
-		{ name: 'популярности', type: 'views' },
-		{ name: 'дате', type: 'date' },
-		{ name: 'выбор редакции', type: 'rating' },
-	];
 
 	return (
 		<div className='menu'>

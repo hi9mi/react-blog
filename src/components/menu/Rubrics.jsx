@@ -1,8 +1,10 @@
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import React from 'react';
+import { Link } from 'react-router-dom';
+import useOutsideClick from '../../utils/Helpers/useOutsideClick';
 
-const Rubrics = React.memo(function Rubrics({ activeRubric, rubricsItems, onClickRubrics, rotated }) {
+const Rubrics = React.memo(function Rubrics({ activeRubric, rubricsItems, onClickRubrics }) {
 	const rubricsRef = React.useRef();
 
 	const onSelectRubricItem = (index) => {
@@ -10,7 +12,7 @@ const Rubrics = React.memo(function Rubrics({ activeRubric, rubricsItems, onClic
 		onClickRubrics(index);
 	};
 
-	const activeNameRubric = rubricsItems[activeRubric];
+	let activeNameRubric = rubricsItems[activeRubric];
 
 	const [visableRubrics, setVisableRubrics] = React.useState(false);
 
@@ -18,15 +20,7 @@ const Rubrics = React.memo(function Rubrics({ activeRubric, rubricsItems, onClic
 		setVisableRubrics(!visableRubrics);
 	};
 
-	const handlOutSideRubricsClick = (e) => {
-		if (!e.path.includes(rubricsRef.current)) {
-			setVisableRubrics(false);
-		}
-	};
-
-	React.useEffect(() => {
-		document.body.addEventListener('click', handlOutSideRubricsClick);
-	}, []);
+	useOutsideClick(rubricsRef, setVisableRubrics);
 
 	return (
 		<li ref={rubricsRef} className='menu__item rubrics'>
@@ -39,12 +33,16 @@ const Rubrics = React.memo(function Rubrics({ activeRubric, rubricsItems, onClic
 
 			{visableRubrics && (
 				<ul className='sub-menu__item'>
-					<li onClick={() => onSelectRubricItem(null)}>Все рубрики</li>
+					<Link to='/rubrics'>
+						<li onClick={() => onSelectRubricItem(null)}>Все рубрики</li>
+					</Link>
 					{rubricsItems &&
 						rubricsItems.map((rubricsName, index) => (
-							<li onClick={() => onSelectRubricItem(index)} key={`${rubricsName}_${index}`}>
-								{rubricsName}
-							</li>
+							<Link to='/rubrics'>
+								<li onClick={() => onSelectRubricItem(index)} key={`${rubricsName}_${index}`}>
+									{rubricsName}
+								</li>
+							</Link>
 						))}
 				</ul>
 			)}

@@ -1,71 +1,41 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import {
-	BigLoadingBlock,
-	BigRubricBlock,
-	Button,
-	LoadingBlock,
-	MediumLoadingBlock,
-	MediumRubrickBlock,
-	RubricsBlock,
-} from '../components';
-import { fetchBigRubrics, fetchMediumRubrics, fetchRubrics } from '../redux/actions';
 
 export default function Home() {
-	const dispatch = useDispatch();
-
-	const { rubricsItems, MediumRubricItems, BigRubricItems } = useSelector(({ rubrics, mRubrics, bigRubrics }) => {
-		return {
-			rubricsItems: rubrics.rubricsItems,
-			MediumRubricItems: mRubrics.MediumRubricItems,
-			BigRubricItems: bigRubrics.BigRubricItems,
-		};
-	});
-
-	const { isLoaded, isLoadedM, isLoadedB } = useSelector(({ rubrics, mRubrics, bigRubrics }) => {
-		return {
-			isLoaded: rubrics.isLoaded,
-			isLoadedM: mRubrics.isLoaded,
-			isLoadedB: bigRubrics.isLoaded,
-		};
-	});
-
-	const { sortBy, rubric } = useSelector(({ filters }) => filters);
-
-	React.useEffect(() => {
-		dispatch(fetchRubrics( sortBy ,rubric));
-		dispatch(fetchMediumRubrics(sortBy ,rubric));
-		dispatch(fetchBigRubrics(sortBy ,rubric));
-	// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [rubric, sortBy]);
-
 	return (
 		<div className='container'>
 			<div className='title__page'>
 				<h1>Главная</h1>
 			</div>
-			<div className='main__content'>
-				{isLoaded
-					? rubricsItems.map((objRubric) => <RubricsBlock key={objRubric.id} {...objRubric} />)
-					: Array(10)
-							.fill(0)
-							.map((_, index) => <LoadingBlock key={index} />)}
-				{isLoadedM
-					? MediumRubricItems.map((objMediumRubric) => (
-							<MediumRubrickBlock key={objMediumRubric.id} {...objMediumRubric} />
-					  ))
-					: Array(1)
-							.fill(1)
-							.map((_, index) => <MediumLoadingBlock key={index} />)}
-				{isLoadedB
-					? BigRubricItems.map((objBigRubric) => <BigRubricBlock key={objBigRubric.id} {...objBigRubric} />)
-					: Array(1)
-							.fill(2)
-							.map((_, index) => <BigLoadingBlock key={index} />)}
+			<div className='home'>
+				<div className='home__title'>
+					<p>Lorem ipsum dolor sit amet.</p>
+				</div>
+				<div className='home__img'>
+					<img
+						src='https://sun9-48.userapi.com/impg/2meu7UaFbnon8PAmHI8VMfgJNJ1IfyRrRDHUng/tQIDLsBvzLA.jpg?size=1330x870&quality=96&proxy=1&sign=859878cf50f9748f09f9df5788bd0876&type=album'
+						alt='home img'
+					/>
+				</div>
+				<div className='home__text'>
+					<p>
+						Lorem, ipsum dolor sit amet consectetur adipisicing elit. Animi dolorum voluptatibus recusandae laboriosam
+						vero illo aliquam provident sed nostrum doloremque. Consequuntur quia et mollitia, omnis modi eum molestiae
+						numquam iusto ut nam fugiat fuga eius, corporis nulla iure cum a asperiores dicta molestias. Provident
+						doloremque repellat vel blanditiis incidunt odio vitae expedita quae, fugit modi. Inventore, iste molestiae.
+						Excepturi aspernatur laboriosam dolor repellat accusamus harum provident voluptates amet aliquam earum,
+						quidem ut nam ratione dolores, architecto culpa dolorem est nobis, repudiandae esse ipsa porro optio. Minima
+						adipisci numquam, error perspiciatis eligendi voluptatibus odio quaerat beatae. Aperiam veritatis odio unde,
+						laborum ex assumenda quam? Officiis totam numquam laborum porro accusantium voluptatem esse, et maxime cum
+						neque perferendis id delectus quibusdam? Sequi, temporibus ipsa tenetur in excepturi illum hic est molestiae
+						officiis architecto accusantium magnam pariatur, neque libero obcaecati labore consectetur sapiente, nostrum
+						illo itaque voluptatem quia! Error, molestiae! Ratione dolore sit dolores id tenetur, quidem, fugiat fuga,
+						consequuntur rem dolorem ipsa eaque explicabo culpa adipisci maxime earum. In nihil enim iste nisi quia
+						quaerat repudiandae neque cumque aliquid perferendis similique reiciendis dolores, recusandae deserunt
+						fugiat! Perferendis facere et aliquid voluptatum officia odit corporis in? Veniam quod sapiente sint
+						nostrum? Sint, labore?
+					</p>
+				</div>
 			</div>
-			<Button showMore>
-				<h2 className='more-h2'>Показать еще</h2>
-			</Button>
 		</div>
 	);
 }

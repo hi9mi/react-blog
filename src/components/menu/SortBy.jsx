@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import useOutsideClick from '../../utils/Helpers/useOutsideClick'
 
 const SortBy = React.memo(function SortBy({ sortItems, activeSortType, onClickSortType }) {
 	const sortRef = React.useRef();
@@ -21,16 +22,8 @@ const SortBy = React.memo(function SortBy({ sortItems, activeSortType, onClickSo
 		setVisableSortBy(!visableSortBy);
 	};
 
-	const handlOutSideSortClick = (e) => {
-		if (!e.path.includes(sortRef.current)) {
-			setVisableSortBy(false);
-		}
-	};
-
-	React.useEffect(() => {
-		document.body.addEventListener('click', handlOutSideSortClick);
-	}, []);
-
+	useOutsideClick(sortRef, setVisableSortBy)
+	
 	return (
 		<div ref={sortRef} className='sort__block'>
 			<div className='sort__label'>
